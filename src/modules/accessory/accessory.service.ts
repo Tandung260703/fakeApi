@@ -16,6 +16,11 @@ export class AccessoryService {
     return accessories;
   }
 
+  async findById(id: string): Promise<Accessory>{
+    const accessory = await this.accessoryModel.findById(id);
+    return accessory;
+  }
+
   async create(accessory: Accessory): Promise<Accessory> {
     const res = await this.accessoryModel.create(accessory);
     return res;
@@ -23,7 +28,6 @@ export class AccessoryService {
 
   async destroy(id: string) {
     const res = await this.accessoryModel.deleteOne({_id: id});
-
     return res;
   }
 }

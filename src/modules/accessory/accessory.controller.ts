@@ -12,6 +12,11 @@ export class AccessoryController {
     const result = await this.accessoryService.findAll();
     return new DataResponse(HttpStatus.OK, result);
   }
+  @Get(":id")
+  async getAccessory(@Param("id") id: string) {
+    const result = await this.accessoryService.findById(id);
+    return new DataResponse(HttpStatus.OK, result);
+  }
 
   @Post()
    async createAccessory(@Body() accessory: Accessory) {
